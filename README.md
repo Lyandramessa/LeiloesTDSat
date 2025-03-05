@@ -1,2 +1,7 @@
 # LeiloesTDSat
-Este repositório contém um sistema informatizado para a gestão de uma casa de leilões. Ele foi desenvolvido para otimizar e automatizar processos de suas rotinas.
+Este projeto é um sistema informatizado para a gestão de uma casa de leilões. Ele permite a administração de leilões, itens, lances e usuários de forma eficiente e segura.
+
+# Tecnologias Utilizadas
+- Java 
+- MySQL 
+- Git/GitHub
