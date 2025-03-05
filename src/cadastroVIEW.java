@@ -135,7 +135,12 @@ public class cadastroVIEW extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cadastroNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroNomeActionPerformed
-        
+        ProdutosDTO produto = new ProdutosDTO();
+        produto.setNome(cadastroNome.getText());
+        produto.setDouble(cadastroValor.getText());
+
+    ProdutosDAO dao = new ProdutosDAO();
+    dao.cadastrarProduto(produto);
         
     }//GEN-LAST:event_cadastroNomeActionPerformed
 
