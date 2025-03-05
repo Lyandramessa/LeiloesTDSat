@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -137,10 +140,16 @@ public class cadastroVIEW extends javax.swing.JFrame {
     private void cadastroNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroNomeActionPerformed
         ProdutosDTO produto = new ProdutosDTO();
         produto.setNome(cadastroNome.getText());
-        produto.setDouble(cadastroValor.getText());
-
-    ProdutosDAO dao = new ProdutosDAO();
-    dao.cadastrarProduto(produto);
+        
+        // Convertendo o valor para double
+    try {
+        double valor = Double.parseDouble(cadastroValor.getText());
+        produto.setValor(valor);
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Digite um valor válido!");
+        return; // Interrompe o salvamento caso o valor seja inválido
+        
+        }
         
     }//GEN-LAST:event_cadastroNomeActionPerformed
 

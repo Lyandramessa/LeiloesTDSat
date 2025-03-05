@@ -33,7 +33,8 @@ public class ProdutosDAO {
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, produto.getNome());
-            stmt.setString(2, produto.getStatus());
+            stmt.setDouble(2, produto.getValor());
+            stmt.setString(3, produto.getStatus());
             stmt.executeUpdate();
             
             JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
@@ -43,7 +44,23 @@ public class ProdutosDAO {
     }
     
     public ArrayList<ProdutosDTO> listarProdutos(){
-        
+                ArrayList<ProdutosDTO> listarProdutos = new ArrayList<>();
+        String sql = "SELECT * FROM produtos";
+
+        try (PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                ProdutosDTO produto = new ProdutosDTO();
+                produto.setId(rs.getInt("id"));
+                produto.setNome(rs.getString("nome"));
+                produto.getValor(rs.getDouble("valor"));
+                produto.setStatus(rs.getString("status"));
+                listarProdutos.add(produto);
+            }
+        } catch (Exception e) {
+            System.out.println("Erro ao listar produtos: " + e.getMessage());
+        }
         return listagem;
     }
         
