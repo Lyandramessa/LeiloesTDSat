@@ -1,6 +1,7 @@
 
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -9,7 +10,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Adm
+ * @SophiaLyandra
  */
 public class listagemVIEW extends javax.swing.JFrame {
 
@@ -145,8 +146,18 @@ public class listagemVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVenderActionPerformed
 
     private void btnVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasActionPerformed
-        //vendasVIEW vendas = new vendasVIEW(); 
-        //vendas.setVisible(true);
+        int linhaSelecionada = listaProdutos.getSelectedRow();
+   
+    if (linhaSelecionada != -1) {
+        int idProduto = (int) listaProdutos.getValueAt(linhaSelecionada, 0);
+       
+        ProdutosDAO dao = new ProdutosDAO();
+        dao.venderProduto(idProduto);
+       
+        carregarLista(); // Atualiza a listagem
+    } else {
+        JOptionPane.showMessageDialog(null, "Selecione um produto para vender.");
+    }
     }//GEN-LAST:event_btnVendasActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
@@ -222,5 +233,9 @@ public class listagemVIEW extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     
+    }
+
+    private void carregarLista() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
