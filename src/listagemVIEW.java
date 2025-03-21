@@ -146,6 +146,9 @@ public class listagemVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVenderActionPerformed
 
     private void btnVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasActionPerformed
+        VendasVIEW vendas = new VendasVIEW();
+        vendas.setVisible(true);
+        
         int linhaSelecionada = listaProdutos.getSelectedRow();
    
     if (linhaSelecionada != -1) {
